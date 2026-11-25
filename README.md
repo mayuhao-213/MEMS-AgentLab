@@ -22,8 +22,8 @@ The project envisions an **Agent-Mapping System** that:
 3. **Executes rapid forward inference**, returning physics-consistent results
 4. **Learns from usage data**, continuously refining model-mapping accuracy
 
-This design allows researchers and engineers to **interact with PINN-driven solvers just like traditional simulation tools**,
-but with **orders-of-magnitude faster response**, minimal numerical iteration, and embedded physical interpretability.
+This design aims to let researchers and engineers **interact with PINN-driven solvers just like traditional simulation tools**,
+with fewer numerical iterations and embedded physical interpretability. End-to-end agent routing and speedups remain goals to validate.
 
 ---
 
@@ -77,9 +77,9 @@ This effectively transforms the problem from
 | :------------------ | :--------------------------------------------------------------------- |
 | **PINN-QFactor**    | Infers the quality factor (Q) given geometry and spectral data         |
 | **PINN-wₜlₜ**       | Inverts geometric parameters (wₜ, lₜ) from frequency response          |
-| **Agent-Mapper**    | Learns the mapping between parameter regimes and model indices         |
-| **Knowledge Graph** | Stores metadata (parameter ranges, residual forms, error metrics)      |
-| **Interface Layer** | Provides API/CLI for users to query physics models via natural prompts |
+| **Agent-Mapper**    | Planned: learn the mapping between parameter regimes and model indices |
+| **Knowledge Graph** | Planned: store metadata (parameter ranges, residual forms, error metrics) |
+| **Interface Layer** | Planned: provide API/CLI queries through natural prompts              |
 
 ---
 
@@ -90,6 +90,13 @@ This effectively transforms the problem from
 * ✅ Implemented visualization suite (error maps, 3D animations, rotation GIFs)
 * 🔄 Designing **Agent-Mapping layer** for model selection and adaptive routing
 * 🔜 Future: Online learning for agent behavior and real-time user interaction
+
+The current repository contains research scripts and notebooks, rather than a packaged agent service.
+Start with [`PINN_Network_Q.py`](泛化多参数/Q_factor/PINN_Network_Q.py) for Q inversion,
+[`wtlt.py`](泛化多参数/wt_lt/wtlt.py) for geometry inversion, and the
+[`physics residual notes`](DataGenerator/getData/README.md) for the underlying equations.
+Dataset and weight files (`.h5`, `.pt`, `.pth`) use Git LFS; fetch their contents before running experiments.
+The Q script reads `./data/test_Q_45.h5`, so its relative paths assume the `泛化多参数/Q_factor` working directory.
 
 ---
 
